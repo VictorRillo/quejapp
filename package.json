@@ -37,6 +37,7 @@
     "@storybook/react-webpack5": "^7.6.17",
     "@storybook/test": "^7.6.17",
     "eslint-plugin-storybook": "^0.8.0",
+    "prettier": "3.2.5",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.17",
     "webpack": "^5.90.3"
