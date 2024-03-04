@@ -8,8 +8,8 @@ jest.mock('react-i18next', () => ({
   
 describe('DataTable', () => {
   const headers = [
-    { key: 'name', title: 'Name' },
-    { key: 'age', title: 'Age' },
+    { key: 'name', title: 'Name', width: '50%' },
+    { key: 'age', title: 'Age', width: '50%' },
   ];
   const data = [
     { name: 'John Doe', age: 30 },

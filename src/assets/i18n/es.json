@@ -14,6 +14,7 @@
     "finished": "Terminado",
     "complaint_list": "Listado",
     "add_complaint": "Añadir queja",
-    "login": "Iniciar sesión"
+    "login": "Iniciar sesión",
+    "items_per_table": "Elementos por página"
   }
 }

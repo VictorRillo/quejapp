@@ -1,0 +1,39 @@
+@import "../../assets/styles/variables.scss";
+
+table.table {
+  margin: 0;
+  th {
+    background-color: $primary-color;
+    color: $text-color;
+  }
+}
+
+.pagination {
+  .page-item {
+    .page-link {
+      color: black;
+
+      &:hover {
+        background-color: lightgrey;
+      }
+    }
+    &.active {
+      .page-link {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: $text-color; // Añade esta línea
+      }
+    }
+  }
+}
+
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  #dropdown-basic {
+    background-color: $primary-color;
+    border-color: grey;
+  }
+}

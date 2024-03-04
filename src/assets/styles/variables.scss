@@ -1,3 +1,7 @@
-$primary-color: #712cf9;
+$primary-color: #ba1d08;
+$secondary-color: lighten($primary-color, 20%);
+$tertiary-color: lighten($primary-color, 35%);
+
 $text-color: white;
 $icon-color: white;
+

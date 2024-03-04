@@ -1,4 +1,5 @@
 export type HeaderTableType = {
     title: string,
-    key: string
+    key: string,
+    width: string
 }
