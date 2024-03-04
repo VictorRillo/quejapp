@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "title": "Título",
+    "description": "Descripción",
+    "priority": "Prioridad",
+    "status": "Estado",
+    "creation_date": "Fecha de creación",
+    "last_update_date": "Última actualización",
+    "in_progress": "En progreso",
+    "low": "Bajo",
+    "medium": "Medio",
+    "high": "Alto",
+    "pending": "Pendiente",
+    "finished": "Terminado"
+  }
+}
