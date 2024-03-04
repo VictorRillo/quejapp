@@ -1,21 +1,30 @@
 import { default as axios } from 'axios';
 import { useApiConfig } from "./useApiConfig";
-import { QueryObserverOptions, useQuery } from "@tanstack/react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { HttpMethod } from "enums/HttpMethod";
 import { HttpEndpoints } from "enums/HttpEndpoints";
 
-
-export const useRequest = (
+type UseQueryWithDefaultOptions<
+  TQueryFnData = unknown,
+  TData = TQueryFnData
+> = {
   endpoint: HttpEndpoints,
   method: HttpMethod,
-  body = undefined,
-  options: QueryObserverOptions = {
-    queryKey: []
-  }
+  body?: string,
+} & Omit<
+  Partial<UseQueryOptions<TQueryFnData, unknown, TData>>,
+  'queryKey' | 'queryFn'
+>;
+
+export const useRequest = <TQueryFnData = unknown, TData = TQueryFnData>({
+  endpoint,
+  method,
+  body,
+  ...useQueryConfig}: UseQueryWithDefaultOptions<TQueryFnData, TData>
 ) => {
   const { baseUrl, headers } = useApiConfig();
 
-  const fetchRequest = async () => {
+  const fetchRequest = async (): Promise<TQueryFnData>  => {
     const config = {
       method,
       url: `${baseUrl}${endpoint}`,
@@ -27,14 +36,13 @@ export const useRequest = (
       const response = await axios(config);
       return response.data;
     } catch (error) {
-      // Handle error (e.g., show a toast message or log it)
       throw error;
     }
   };
 
-  return useQuery({
+  return useQuery<TQueryFnData, unknown, TData>({
     queryFn: fetchRequest,
-    ...options,
-    queryKey: [method, endpoint]
+    queryKey: [method, endpoint],
+    ...useQueryConfig
   });
 };
