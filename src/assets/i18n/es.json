@@ -11,6 +11,9 @@
     "medium": "Medio",
     "high": "Alto",
     "pending": "Pendiente",
-    "finished": "Terminado"
+    "finished": "Terminado",
+    "complaint_list": "Listado",
+    "add_complaint": "Añadir queja",
+    "login": "Iniciar sesión"
   }
 }
