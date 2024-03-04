@@ -3,7 +3,8 @@ import { useGetAllComplaints } from "hooks/api/useGetAllComplaints";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DataTable from "components/DataTable/DataTable";
 import { HeaderTableType } from "types/tableType";
-import './locale/i18n.ts'
+import "assets/i18n/i18n";
+import Header from "components/Header/Header";
 
 const queryClient = new QueryClient();
 
@@ -19,12 +20,13 @@ function Content() {
     { title: "last_update_date", key: "updatedAt" },
   ];
 
-  return data ? <DataTable headers={headers} data={data}/> : <></>;
+  return data ? <DataTable headers={headers} data={data} /> : <></>;
 }
 
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Header />
       <Content />
     </QueryClientProvider>
   );

@@ -1,0 +1,31 @@
+.header {
+  top: 0;
+  position: sticky;
+  background-color: #712cf9;
+  box-shadow: 0 1px 2px 0;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+}
+
+.logo {
+  height: 70px;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-item {
+  color: white;
+  text-decoration: none;
+}
+
+.login-icon {
+  color: white;
+  cursor: pointer;
+  width: 50px;
+}

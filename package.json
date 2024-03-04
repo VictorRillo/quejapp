@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@tanstack/react-query": "^5.24.6",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
@@ -14,7 +16,8 @@
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.5",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "sass": "^1.71.1"
   },
   "scripts": {
     "start": "react-scripts start",
