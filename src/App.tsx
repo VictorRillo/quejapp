@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetAllComplaints } from "hooks/api/useGetAllComplaints";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import DataTable from "components/DataTable";
+import DataTable from "components/DataTable/DataTable";
 import { HeaderTableType } from "types/tableType";
 import './locale/i18n.ts'
 
