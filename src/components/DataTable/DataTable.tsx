@@ -5,6 +5,7 @@ import { HeaderTableType } from "types/tableType";
 import { useTranslation } from "react-i18next";
 import "./DataTable.scss";
 import Dropdown from "react-bootstrap/Dropdown";
+import Form from "react-bootstrap/Form";
 
 const DataTable = ({
   headers,
@@ -16,8 +17,15 @@ const DataTable = ({
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const numPages = Math.ceil(data.length / itemsPerPage);
+  const filteredData = data.filter((item) =>
+  Object.values(item).some((val: any) =>
+    val.toString().toLowerCase().includes(searchTerm.toLowerCase())
+  )
+);
+
+  const numPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -37,13 +45,25 @@ const DataTable = ({
     }
   };
 
-  const paginatedData = data.slice(
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1);
+  };
+
+
+  const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
 
   return (
     <>
+      <Form.Control
+        type="text"
+        placeholder={(t('table_search_placeholder'))}
+        value={searchTerm}
+        onChange={handleSearch}
+      />
       <Table striped bordered hover className="table">
         <thead>
           <tr>

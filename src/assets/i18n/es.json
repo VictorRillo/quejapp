@@ -15,6 +15,7 @@
     "complaint_list": "Listado",
     "add_complaint": "Añadir queja",
     "login": "Iniciar sesión",
-    "items_per_table": "Elementos por página"
+    "items_per_table": "Elementos por página",
+    "table_search_placeholder": "Introduce texto por el que filtrar"
   }
 }
