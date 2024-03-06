@@ -16,6 +16,15 @@
     "add_complaint": "Añadir queja",
     "login": "Iniciar sesión",
     "items_per_table": "Elementos por página",
-    "table_search_placeholder": "Introduce texto por el que filtrar"
+    "table_search_placeholder": "Introduce texto por el que filtrar",
+    "form_title": "Título",
+    "form_description": "Descripción",
+    "form_postal_code": "Código Postal",
+    "form_address": "Dirección",
+    "placeholder_title": "Introduce el título",
+    "placeholder_description": "Introduce la descripción",
+    "placeholder_postal_code": "Introduce el código postal",
+    "placeholder_address": "Introduce la dirección",
+    "submit_button_text": "Enviar"
   }
 }

@@ -8,9 +8,10 @@ type UseQueryWithDefaultOptions<
   TQueryFnData = unknown,
   TData = TQueryFnData
 > = {
-  endpoint: HttpEndpoints,
   method: HttpMethod,
+  endpoint?: HttpEndpoints,
   body?: string,
+  fullUrl?: string
 } & Omit<
   Partial<UseQueryOptions<TQueryFnData, unknown, TData>>,
   'queryKey' | 'queryFn'
@@ -20,6 +21,7 @@ export const useRequest = <TQueryFnData = unknown, TData = TQueryFnData>({
   endpoint,
   method,
   body,
+  fullUrl,
   ...useQueryConfig}: UseQueryWithDefaultOptions<TQueryFnData, TData>
 ) => {
   const { baseUrl, headers } = useApiConfig();
@@ -27,7 +29,7 @@ export const useRequest = <TQueryFnData = unknown, TData = TQueryFnData>({
   const fetchRequest = async (): Promise<TQueryFnData>  => {
     const config = {
       method,
-      url: `${baseUrl}${endpoint}`,
+      url: fullUrl ? fullUrl : `${baseUrl}${endpoint}`,
       headers,
       data: body
     };

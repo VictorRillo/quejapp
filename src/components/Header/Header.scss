@@ -37,3 +37,18 @@
   border: none;
   color: $icon-color;
 }
+
+.add-complaint-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  color: $text-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 5px;
+}
+
+.add-complaint-button:hover {
+  transform: scale(1.3);
+}

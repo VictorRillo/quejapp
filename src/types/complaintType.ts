@@ -1,8 +1,9 @@
 export type ComplaintType = {
-  objectId: string;
   position: [number, number];
+  address: string;
   title: string;
   description: string;
+  objectId: string;
   priority: string;
   status: string;
   createdAt: string;
@@ -12,3 +13,6 @@ export type ComplaintType = {
 export type ComplaintListType = {
   results: ComplaintType[]
 };
+
+
+export type ComplaintFormType = Pick<ComplaintType, 'position' | 'address' | 'title' | 'description'>;

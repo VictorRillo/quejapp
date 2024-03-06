@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGetAllComplaints } from "hooks/api/useGetAllComplaints";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DataTable from "components/DataTable/DataTable";

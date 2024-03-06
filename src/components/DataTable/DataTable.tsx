@@ -16,7 +16,7 @@ const DataTable = ({
 }) => {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredData = data.filter((item) =>
