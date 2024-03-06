@@ -18,14 +18,26 @@ const DataTable = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortField, setSortField] = useState("");
+  const [sortDirection, setSortDirection] = useState(true); // true for ascending, false for descending
 
   const filteredData = data.filter((item) =>
-  Object.values(item).some((val: any) =>
-    val.toString().toLowerCase().includes(searchTerm.toLowerCase())
-  )
-);
+    Object.values(item).some((val: any) =>
+      val.toString().toLowerCase().includes(searchTerm.toLowerCase()),
+    ),
+  );
 
-  const numPages = Math.ceil(filteredData.length / itemsPerPage);
+  const sortedData = [...filteredData].sort((a, b) => {
+    if (a[sortField] < b[sortField]) {
+      return sortDirection ? -1 : 1;
+    }
+    if (a[sortField] > b[sortField]) {
+      return sortDirection ? 1 : -1;
+    }
+    return 0;
+  });
+
+  const numPages = Math.ceil(sortedData.length / itemsPerPage);
 
   const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -50,8 +62,12 @@ const DataTable = ({
     setCurrentPage(1);
   };
 
+  const handleSort = (field: string) => {
+    setSortField(field);
+    setSortDirection(field === sortField ? !sortDirection : true);
+  };
 
-  const paginatedData = filteredData.slice(
+  const paginatedData = sortedData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
@@ -60,7 +76,7 @@ const DataTable = ({
     <>
       <Form.Control
         type="text"
-        placeholder={(t('table_search_placeholder'))}
+        placeholder={t("table_search_placeholder")}
         value={searchTerm}
         onChange={handleSearch}
       />
@@ -68,8 +84,13 @@ const DataTable = ({
         <thead>
           <tr>
             {headers.map((header) => (
-              <th key={header.key} style={{ width: header.width }}>
+              <th
+                key={header.key}
+                style={{ width: header.width }}
+                onClick={() => handleSort(header.key)}
+              >
                 {t(header.title)}
+                {sortField === header.key && (sortDirection ? " 🔽" : " 🔼")}
               </th>
             ))}
           </tr>
@@ -87,9 +108,9 @@ const DataTable = ({
       <div className="table-footer">
         <Dropdown onSelect={handleSelect}>
           <Dropdown.Toggle id="dropdown-basic">
-            {t('items_per_table')}
+            {t("items_per_table")}
           </Dropdown.Toggle>
-  
+
           <Dropdown.Menu>
             <Dropdown.Item eventKey="5">5</Dropdown.Item>
             <Dropdown.Item eventKey="10">10</Dropdown.Item>
@@ -114,7 +135,6 @@ const DataTable = ({
       </div>
     </>
   );
-  
 };
 
 export default DataTable;
