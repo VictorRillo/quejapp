@@ -35,6 +35,9 @@ const Header = () => {
       </div>
       <div>
         <Modal show={show} onHide={() => setShow(false)} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{t("add_complaint_title")}</Modal.Title>
+          </Modal.Header>
           <Modal.Body>
             <ComplaintForm />
           </Modal.Body>

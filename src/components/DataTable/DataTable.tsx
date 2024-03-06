@@ -74,12 +74,18 @@ const DataTable = ({
 
   return (
     <>
-      <Form.Control
-        type="text"
-        placeholder={t("table_search_placeholder")}
-        value={searchTerm}
-        onChange={handleSearch}
-      />
+      <Form.Group
+        controlId="formTitle"
+        className="d-flex align-items-center my-3"
+      >
+        <Form.Label className="label_search">{t("search")}:</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder={t("table_search_placeholder")}
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </Form.Group>
       <Table striped bordered hover className="table">
         <thead>
           <tr>
@@ -108,9 +114,8 @@ const DataTable = ({
       <div className="table-footer">
         <Dropdown onSelect={handleSelect}>
           <Dropdown.Toggle id="dropdown-basic">
-            {t("items_per_table")}
+            {t("items_per_table", { elements: itemsPerPage })}
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
             <Dropdown.Item eventKey="5">5</Dropdown.Item>
             <Dropdown.Item eventKey="10">10</Dropdown.Item>

@@ -12,10 +12,10 @@
     "high": "Alto",
     "pending": "Pendiente",
     "finished": "Terminado",
-    "complaint_list": "Listado",
+    "complaint_list": "Listado de quejas",
     "add_complaint": "Añadir queja",
     "login": "Iniciar sesión",
-    "items_per_table": "Elementos por página",
+    "items_per_table": "Mostrar {{elements}} elementos por página",
     "table_search_placeholder": "Introduce texto por el que filtrar",
     "form_title": "Título",
     "form_description": "Descripción",
@@ -25,6 +25,8 @@
     "placeholder_description": "Introduce la descripción",
     "placeholder_postal_code": "Introduce el código postal",
     "placeholder_address": "Introduce la dirección",
-    "submit_button_text": "Enviar"
+    "submit_button_text": "Enviar",
+    "search": "Buscar",
+    "add_complaint_title": "Añadir queja"
   }
 }
