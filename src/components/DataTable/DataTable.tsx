@@ -6,15 +6,18 @@ import { useTranslation } from "react-i18next";
 import "./DataTable.scss";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
+import { ComplaintType } from "types/complaintType";
 
 const DataTable = ({
   headers,
   data,
   onMouseOverRow,
+  onRowClick,
 }: {
   headers: HeaderTableType[];
   data: any[];
-  onMouseOverRow: (row: any) => void;
+  onMouseOverRow?: (row: ComplaintType) => void;
+  onRowClick?: (row: ComplaintType) => void;
 }) => {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
@@ -80,10 +83,10 @@ const DataTable = ({
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
-  
+
     timerRef.current = setTimeout(() => {
-      onMouseOverRow(item);
-    },700);
+      onMouseOverRow && onMouseOverRow(item);
+    }, 700);
   };
 
   const handleMouseLeave = () => {
@@ -125,12 +128,17 @@ const DataTable = ({
           {paginatedData.map((item, rowIndex) => (
             <tr
               key={rowIndex}
-              onMouseOver={() => handleMouseOver(item)}
-              onMouseLeave={handleMouseLeave}
+              onMouseOver={() => onMouseOverRow && handleMouseOver(item)}
+              onMouseLeave={() => onMouseOverRow && handleMouseLeave()}
+              onClick={() => onRowClick && onRowClick(item)}
             >
               {headers.map((header, valueIndex) => (
-                <td key={rowIndex + "-" + valueIndex}>{header.type !== 'date' ? item[header.key] : new Date(item[header.key]).toLocaleDateString()}</td>
-              ))} 
+                <td key={rowIndex + "-" + valueIndex}>
+                  {header.type !== "date"
+                    ? item[header.key]
+                    : new Date(item[header.key]).toLocaleDateString()}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>

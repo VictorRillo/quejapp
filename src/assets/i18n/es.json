@@ -4,6 +4,7 @@
     "description": "Descripción",
     "priority": "Prioridad",
     "status": "Estado",
+    "complaint_details_title": "Detalles de la queja",
     "creation_date": "Fecha de creación",
     "last_update_date": "Última actualización",
     "in_progress": "En progreso",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import logo from "../../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +12,19 @@ const Header = () => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
-  document.addEventListener(CUSTOM_EVENT.CLOSE_MODAL, () => setShow(false));
+  useEffect(() => {
+    window.addEventListener(
+      CUSTOM_EVENT.CLOSE_ADD_MODAL,
+      setShow(false) as unknown as EventListener,
+    );
+
+    return () => {
+      window.removeEventListener(
+        CUSTOM_EVENT.CLOSE_ADD_MODAL,
+        setShow(false) as unknown as EventListener,
+      );
+    };
+  }, []);
 
   return (
     <>

@@ -2,9 +2,14 @@ import DataTable from "components/DataTable/DataTable";
 import { CUSTOM_EVENT } from "enums/CustomEvent";
 import { useGetAllComplaints } from "hooks/api/useGetAllComplaints";
 import React from "react";
+import { ComplaintType } from "types/complaintType";
 import { HeaderTableType } from "types/tableType";
 
-export default function ComplaintTable() {
+export default function ComplaintTable({
+  onRowClick,
+}: {
+  onRowClick?: (row: ComplaintType) => void;
+}) {
   const { data: complaints } = useGetAllComplaints();
 
   const headers: HeaderTableType[] = [
@@ -12,12 +17,14 @@ export default function ComplaintTable() {
     { title: "description", key: "description", width: "40%" },
     { title: "priority", key: "priority", width: "10%" },
     { title: "status", key: "status", width: "10%" },
-    { title: "creation_date", key: "createdAt", width: "10%", type: "date"},
-    { title: "last_update_date", key: "updatedAt", width: "10%", type: "date"},
+    { title: "creation_date", key: "createdAt", width: "10%", type: "date" },
+    { title: "last_update_date", key: "updatedAt", width: "10%", type: "date" },
   ];
 
   const handleOnMouseOverRow = (row: any) => {
-    const event = new CustomEvent(CUSTOM_EVENT.MOUSE_OVER_ROW, { detail: row.position });
+    const event = new CustomEvent(CUSTOM_EVENT.MOUSE_OVER_ROW, {
+      detail: row.position,
+    });
     window.dispatchEvent(event);
   };
 
@@ -26,6 +33,7 @@ export default function ComplaintTable() {
       headers={headers}
       data={complaints}
       onMouseOverRow={handleOnMouseOverRow}
+      onRowClick={onRowClick}
     />
   ) : (
     <></>

@@ -16,6 +16,7 @@ L.Icon.Default.mergeOptions({
 const queryClient = new QueryClient();
 
 export default function App() {
+
   return (
     <QueryClientProvider client={queryClient}>
       <Header />

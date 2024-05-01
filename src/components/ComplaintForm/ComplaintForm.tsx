@@ -65,7 +65,7 @@ const ComplaintForm = () => {
 
   const handleCreateComplaint = async () => {
     await postComplaint(complaint);
-    document.dispatchEvent(new Event(CUSTOM_EVENT.CLOSE_MODAL));
+    document.dispatchEvent(new Event(CUSTOM_EVENT.CLOSE_ADD_MODAL));
   };
 
   useEffect(() => {
