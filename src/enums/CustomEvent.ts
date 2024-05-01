@@ -1,3 +1,4 @@
-export enum CustomEvent {
-    CLOSE_MODAL = 'CLOSE_MODAL'
+export enum CUSTOM_EVENT {
+    CLOSE_MODAL = 'CLOSE_MODAL',
+    MOUSE_OVER_ROW = 'MOUSE_OVER_ROW'
 }

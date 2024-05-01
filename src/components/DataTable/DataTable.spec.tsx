@@ -6,6 +6,8 @@ jest.mock('react-i18next', () => ({
     useTranslation: () => ({ t: (key: string) => key }),
   }));
   
+const handleMock = jest.fn();
+
 describe('DataTable', () => {
   const headers = [
     { key: 'name', title: 'Name', width: '50%' },
@@ -17,12 +19,12 @@ describe('DataTable', () => {
   ];
 
   it('should render without crashing', () => {
-    render(<DataTable headers={headers} data={data} />);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} />);
     expect(screen.getByText('Name')).toBeTruthy();
   });
 
   it('should render correct headers', () => {
-    render(<DataTable headers={headers} data={data} />);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} />);
 
     headers.forEach((header) => {
       expect(screen.getByText(header.title)).toBeTruthy();
@@ -30,7 +32,7 @@ describe('DataTable', () => {
   });
 
   it('should render correct data', () => {
-    render(<DataTable headers={headers} data={data} />);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} />);
 
     data.forEach((item) => {
       Object.values(item).forEach((value) => {
@@ -40,7 +42,7 @@ describe('DataTable', () => {
   });
 
   it('should match snapshot', () => {
-    render(<DataTable headers={headers} data={data} />);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock}/>);
     
     expect(screen).toMatchSnapshot();
   });

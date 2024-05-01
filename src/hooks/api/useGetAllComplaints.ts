@@ -14,10 +14,10 @@ export const useGetAllComplaints = () => {
     select: (data) =>
       data.results.map((item) => ({
         ...item,
-        createdAt: new Date(item.createdAt).toLocaleDateString(),
-        updatedAt: new Date(item.updatedAt).toLocaleDateString(),
+        createdAt: item.createdAt,
+        updatedAt: item.updatedAt,
         status: t(item.status),
         priority: t(item.priority),
-      }))
+      })).sort((a, b) => { return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime() })
   });
 };

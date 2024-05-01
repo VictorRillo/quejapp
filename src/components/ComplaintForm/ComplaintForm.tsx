@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { ComplaintFormType } from "types/complaintType";
 import { searchAddress } from "functions/searchAddress";
 import usePostComplaint from "hooks/api/usePostComplaint";
-import { CustomEvent } from "enums/CustomEvent";
+import { CUSTOM_EVENT } from "enums/CustomEvent";
 
 const ComplaintForm = () => {
   const { t } = useTranslation();
@@ -55,17 +55,17 @@ const ComplaintForm = () => {
     }));
   };
 
-  const shouldEnableButton = () =>
-    complaint.position &&
+  const shouldEnableButton = (): boolean =>
+    Boolean(complaint.position) &&
     complaint.position[0] !== 0 &&
     complaint.position[1] !== 0 &&
-    complaint.address &&
-    complaint.title &&
-    complaint.description;
+    Boolean(complaint.address) &&
+    Boolean(complaint.title) &&
+    Boolean(complaint.description);
 
   const handleCreateComplaint = async () => {
     await postComplaint(complaint);
-    document.dispatchEvent(new Event(CustomEvent.CLOSE_MODAL));
+    document.dispatchEvent(new Event(CUSTOM_EVENT.CLOSE_MODAL));
   };
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const ComplaintForm = () => {
   };
 
   return (
-    <Form onSubmit={handleCreateComplaint} className="complaint-form">
+    <Form className="complaint-form">
       <Form.Group controlId="formTitle" className="form-group">
         <Form.Label>{t("form_title")}</Form.Label>
         <Form.Control
@@ -143,9 +143,9 @@ const ComplaintForm = () => {
 
       <Button
         variant="primary"
-        type="submit"
         className="submit-button"
         disabled={!shouldEnableButton()}
+        onClick={handleCreateComplaint}
       >
         {t("submit_button_text")}
       </Button>

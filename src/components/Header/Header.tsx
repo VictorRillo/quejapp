@@ -6,13 +6,13 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { Modal } from "react-bootstrap";
 import ComplaintForm from "components/ComplaintForm/ComplaintForm";
-import { CustomEvent } from "enums/CustomEvent";
+import { CUSTOM_EVENT } from "enums/CustomEvent";
 
 const Header = () => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
-  document.addEventListener(CustomEvent.CLOSE_MODAL, () => setShow(false));
+  document.addEventListener(CUSTOM_EVENT.CLOSE_MODAL, () => setShow(false));
 
   return (
     <>

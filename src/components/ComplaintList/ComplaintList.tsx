@@ -1,20 +1,16 @@
-import DataTable from "components/DataTable/DataTable";
-import { useGetAllComplaints } from "hooks/api/useGetAllComplaints";
+import ComplaintMap from "components/ComplaintMap/ComplaintMap";
+import ComplaintTable from "components/ComplaintTable/ComplaintTable";
 import React from "react";
-import { HeaderTableType } from "types/tableType";
 
 export default function ComplaintList() {
-    const { data } = useGetAllComplaints();
-  
-    const headers: HeaderTableType[] = [
-      { title: "title", key: "title", width: '20%' },
-      { title: "description", key: "description", width: '40%' },
-      { title: "priority", key: "priority", width: '10%' },
-      { title: "status", key: "status", width: '10%' },
-      { title: "creation_date", key: "createdAt", width: '10%' },
-      { title: "last_update_date", key: "updatedAt", width: '10%' },
-    ];
-  
-    return data ? <DataTable headers={headers} data={data} /> : <></>;
-  }
-  
+  return (
+    <div className="row" style={{ margin: "10px"}}>
+      <div className="col-9">
+        <ComplaintTable />
+      </div>
+      <div className="col-3" style={{ position: "fixed", right: 0 }}>
+        <ComplaintMap />
+      </div>
+    </div>
+  );
+}

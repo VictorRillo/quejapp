@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
 import { HeaderTableType } from "types/tableType";
@@ -10,9 +10,11 @@ import Form from "react-bootstrap/Form";
 const DataTable = ({
   headers,
   data,
+  onMouseOverRow,
 }: {
   headers: HeaderTableType[];
   data: any[];
+  onMouseOverRow: (row: any) => void;
 }) => {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
@@ -72,6 +74,24 @@ const DataTable = ({
     currentPage * itemsPerPage,
   );
 
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseOver = (item: any) => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+  
+    timerRef.current = setTimeout(() => {
+      onMouseOverRow(item);
+    },700);
+  };
+
+  const handleMouseLeave = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+  };
+
   return (
     <>
       <Form.Group
@@ -103,10 +123,14 @@ const DataTable = ({
         </thead>
         <tbody>
           {paginatedData.map((item, rowIndex) => (
-            <tr key={rowIndex}>
+            <tr
+              key={rowIndex}
+              onMouseOver={() => handleMouseOver(item)}
+              onMouseLeave={handleMouseLeave}
+            >
               {headers.map((header, valueIndex) => (
-                <td key={rowIndex + "-" + valueIndex}>{item[header.key]}</td>
-              ))}
+                <td key={rowIndex + "-" + valueIndex}>{header.type !== 'date' ? item[header.key] : new Date(item[header.key]).toLocaleDateString()}</td>
+              ))} 
             </tr>
           ))}
         </tbody>
