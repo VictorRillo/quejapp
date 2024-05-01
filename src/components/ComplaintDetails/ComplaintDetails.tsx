@@ -31,7 +31,7 @@ export default function ComplaintDetails({
         center: complaint.position as LatLngExpression,
         zoom: 17,
       });
-      const description = `${complaint.title}</b><br>${complaint.description}<br>${complaint.address ? complaint.address : ""}`;
+      const description = `<b>${complaint.title}</b><br>${complaint.description}<br><br>${complaint.address ? complaint.address : ''}`
       marker([complaint.position[0], complaint.position[1]], {
         alt: description,
       })

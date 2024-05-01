@@ -22,7 +22,7 @@ table.table {
       .page-link {
         background-color: $primary-color;
         border-color: $primary-color;
-        color: $text-color; // Añade esta línea
+        color: $text-color;
       }
     }
   }
@@ -46,4 +46,19 @@ table.table {
 
 td {
   cursor: pointer;
+}
+
+button.btn.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: $text-color;
+  &:active {
+    background-color: $secondary-color;
+    border-color: $primary-color;
+    color: $text-color;
+  }
+}
+
+ul.pagination.pagination {
+  margin: 10px 0;
 }

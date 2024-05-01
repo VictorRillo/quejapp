@@ -19,12 +19,16 @@ describe('DataTable', () => {
   ];
 
   it('should render without crashing', () => {
-    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} />);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} filterButtonText={''} handleFilterButtonClick={function (): void {
+      throw new Error('Function not implemented.');
+    } } />);
     expect(screen.getByText('Name')).toBeTruthy();
   });
 
   it('should render correct headers', () => {
-    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} />);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} filterButtonText={''} handleFilterButtonClick={function (): void {
+      throw new Error('Function not implemented.');
+    } } />);
 
     headers.forEach((header) => {
       expect(screen.getByText(header.title)).toBeTruthy();
@@ -32,7 +36,9 @@ describe('DataTable', () => {
   });
 
   it('should render correct data', () => {
-    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} />);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} filterButtonText={''} handleFilterButtonClick={function (): void {
+      throw new Error('Function not implemented.');
+    } } />);
 
     data.forEach((item) => {
       Object.values(item).forEach((value) => {
@@ -42,7 +48,9 @@ describe('DataTable', () => {
   });
 
   it('should match snapshot', () => {
-    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock}/>);
+    render(<DataTable headers={headers} data={data} onMouseOverRow={handleMock} filterButtonText={''} handleFilterButtonClick={function (): void {
+      throw new Error('Function not implemented.');
+    } }/>);
     
     expect(screen).toMatchSnapshot();
   });

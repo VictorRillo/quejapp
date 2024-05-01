@@ -7,6 +7,7 @@ import { ComplaintFormType } from "types/complaintType";
 import { searchAddress } from "functions/searchAddress";
 import usePostComplaint from "hooks/api/usePostComplaint";
 import { CUSTOM_EVENT } from "enums/CustomEvent";
+import toast from 'react-hot-toast';
 
 const ComplaintForm = () => {
   const { t } = useTranslation();
@@ -65,7 +66,8 @@ const ComplaintForm = () => {
 
   const handleCreateComplaint = async () => {
     await postComplaint(complaint);
-    document.dispatchEvent(new Event(CUSTOM_EVENT.CLOSE_ADD_MODAL));
+    toast.success(t("complaint_created"));
+    window.dispatchEvent(new Event(CUSTOM_EVENT.CLOSE_HEADER_MODAL));
   };
 
   useEffect(() => {

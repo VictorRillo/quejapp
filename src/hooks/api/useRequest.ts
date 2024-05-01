@@ -9,7 +9,7 @@ type UseQueryWithDefaultOptions<
   TData = TQueryFnData
 > = {
   method: HttpMethod,
-  endpoint?: HttpEndpoints,
+  endpoint?: HttpEndpoints | string,
   body?: string,
   fullUrl?: string
 } & Omit<
@@ -41,7 +41,7 @@ export const useRequest = <TQueryFnData = unknown, TData = TQueryFnData>({
       throw error;
     }
   };
-
+ 
   return useQuery<TQueryFnData, unknown, TData>({
     queryFn: fetchRequest,
     queryKey: [method, endpoint],

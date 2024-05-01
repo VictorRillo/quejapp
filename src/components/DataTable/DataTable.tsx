@@ -7,15 +7,20 @@ import "./DataTable.scss";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import { ComplaintType } from "types/complaintType";
+import { Row } from "react-bootstrap";
 
 const DataTable = ({
   headers,
   data,
+  filterButtonText,
+  handleFilterButtonClick,
   onMouseOverRow,
   onRowClick,
 }: {
   headers: HeaderTableType[];
   data: any[];
+  filterButtonText: string;
+  handleFilterButtonClick: () => void;
   onMouseOverRow?: (row: ComplaintType) => void;
   onRowClick?: (row: ComplaintType) => void;
 }) => {
@@ -95,19 +100,36 @@ const DataTable = ({
     }
   };
 
+  const isLogged = sessionStorage.getItem("isLoggedIn");
+
   return (
     <>
       <Form.Group
         controlId="formTitle"
         className="d-flex align-items-center my-3"
       >
-        <Form.Label className="label_search">{t("search")}:</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder={t("table_search_placeholder")}
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+        <Row style={{ width: "100%" }}>
+          <div className="col-4" style={{ display: "flex", alignItems: "end" }}>
+            <Form.Label className="label_search">{t("search")}:</Form.Label>
+            <Form.Control
+              className="col-4"
+              type="text"
+              placeholder={t("table_search_placeholder")}
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+          {isLogged && (
+            <div className="col-8" style={{ textAlign: "right" }}>
+              <button
+                className="btn btn-primary"
+                onClick={handleFilterButtonClick}
+              >
+                {filterButtonText}
+              </button>
+            </div>
+          )}
+        </Row>
       </Form.Group>
       <Table striped bordered hover className="table">
         <thead>

@@ -20,15 +20,22 @@ const usePostComplaint = () => {
     };
 
     const response = await axios(config);
-    return response.data; // You can adjust this based on your API response structure
+    return response.data;
   };
 
   return useMutation({
     mutationFn: createComplaint,
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: [HttpMethod.GET, HttpEndpoints.COMPLAINTS],
-      }),
+        predicate: (query) => {
+          const key = query.queryKey;
+          return (
+            Array.isArray(key) &&
+            key[0] === HttpMethod.GET &&
+            key[1].startsWith(HttpEndpoints.COMPLAINTS)
+          );
+        }
+      })
   });
 };
 
