@@ -51,6 +51,9 @@
     "complaint_created": "Queja creada correctamente",
     "my_complaints": "Mis quejas",
     "complaints_success": "Listado de quejas recuperado correctamente",
-    "all_complaints": "Todas las quejas"
+    "all_complaints": "Todas las quejas",
+    "increase_font_size": "Aumentar tamaño de fuente",
+    "decrease_font_size": "Disminuir tamaño de fuente",
+    "landing_page_description": "<strong>¡Exprésate y mejora tu ciudad!</strong> Al enviar tus quejas de forma <strong>anónima</strong>, puedes contribuir a un cambio positivo sin revelar tu identidad. Mejoraras tu entorno, influirás en las decisiones del ayuntamiento y fomentarás la transparencia. Además, si te <strong>registras</strong> podrás ver el estado de tus quejas y recibir notificaciones."
   }
 }

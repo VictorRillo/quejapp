@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Form, Button } from "react-bootstrap";
 import Autosuggest from "react-autosuggest";
 import "./ComplaintForm.scss";
@@ -7,7 +7,8 @@ import { ComplaintFormType } from "types/complaintType";
 import { searchAddress } from "functions/searchAddress";
 import usePostComplaint from "hooks/api/usePostComplaint";
 import { CUSTOM_EVENT } from "enums/CustomEvent";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+import { LatLngExpression, Map, marker, tileLayer, Marker } from "leaflet";
 
 const ComplaintForm = () => {
   const { t } = useTranslation();
@@ -23,6 +24,67 @@ const ComplaintForm = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
   const [isSuggestionSelected, setIsSuggestionSelected] = useState(false);
+  const [map, setMap] = useState<Map>();
+  const [userCoords, setUserCoords] = useState<[number, number] | null>(null);
+  const [mapMarker, setMapMarker] = useState<Marker>();
+
+  const mapInit = useRef<boolean>(false);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setUserCoords([latitude, longitude]);
+      });
+    }
+  }, []);
+
+  const initMap = () => {
+    map &&
+      tileLayer(
+        "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+        {
+          maxZoom: 19,
+        },
+      ).addTo(map);
+  };
+
+  useEffect(() => {
+    if (!mapInit.current && userCoords) {
+      mapInit.current = true;
+      const map = new Map("map-form", {
+        center: userCoords as LatLngExpression,
+        zoom: 17,
+      });
+
+      setMap(map);
+    }
+    if (map) {
+      initMap();
+    }
+  }, [mapInit, map, userCoords]);
+
+  useEffect(() => {
+    if (
+      complaint.position[0] !== 0 &&
+      complaint.position[1] !== 0 &&
+      mapInit.current &&
+      map
+    ) {
+      const newMarker = marker([complaint.position[0], complaint.position[1]]);
+
+      newMarker
+        .addTo(map)
+        .bindPopup(
+          `<b>${complaint.title}</b><br>${complaint.description}<br><br>${complaint.address ? complaint.address : ""}`,
+        );
+        if (mapMarker) {
+          mapMarker.remove()
+        }
+      setMapMarker(newMarker);
+      map.setView(complaint.position, 18);
+    }
+  }, [complaint.position]);
 
   const handleAddressChange = (_event: any, { newValue }: any) => {
     setComplaint((prevState) => ({ ...prevState, address: newValue }));
@@ -35,7 +97,10 @@ const ComplaintForm = () => {
           if (newValue.length < 3) {
             return;
           }
-          const data = await searchAddress(`${newValue} ${postalCode}`, 3);
+          const data = await searchAddress(
+            `${newValue} ,${postalCode}, Spain`,
+            3,
+          );
           setSuggestions(data);
         }, 500),
       );
@@ -142,6 +207,8 @@ const ComplaintForm = () => {
           />
         </div>
       </Form.Group>
+
+      <div id="map-form"></div>
 
       <Button
         variant="primary"

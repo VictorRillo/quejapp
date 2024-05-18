@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import logo from "../../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFont,
+  faSignOutAlt,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { Modal } from "react-bootstrap";
 import ComplaintForm from "components/ComplaintForm/ComplaintForm";
 import { CUSTOM_EVENT } from "enums/CustomEvent";
 import Register from "components/Register/Register";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import i18n from "i18next";
 
 export enum MODAL_SECTION {
   ADD = "ADD",
@@ -51,6 +56,27 @@ const Header = () => {
 
   const isLogged = !!sessionStorage.getItem("isLoggedIn");
 
+  const handleChangeLanguage = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const language = event.target.value;
+    i18n.changeLanguage(language);
+  };
+
+  const [fontSize, setFontSize] = useState(16);
+
+  const increaseFontSize = () => {
+    setFontSize((prevFontSize) => prevFontSize + 1);
+  };
+
+  const decreaseFontSize = () => {
+    setFontSize((prevFontSize) => prevFontSize - 1);
+  };
+
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${fontSize}px`;
+  }, [fontSize]);
+
   return (
     <>
       <div>
@@ -71,23 +97,44 @@ const Header = () => {
             {t("add_complaint")}
           </button>
         </div>
-        {!isLogged ? (
+        <div>
           <button
-            className="login-icon"
-            aria-label={t("login")}
-            onClick={handleUserModal}
+            aria-label={t("increase_font_size")}
+            onClick={increaseFontSize}
+            className="increase-size-button"
           >
-            <FontAwesomeIcon icon={faUser} size="2x" />
+            <FontAwesomeIcon icon={faFont} />
           </button>
-        ) : (
           <button
-            className="login-icon"
-            aria-label={t("close_session")}
-            onClick={handleCloseSession}
+            aria-label={t("decrease_font_size")}
+            onClick={decreaseFontSize}
+            className="decrease-size-button"
           >
-            <FontAwesomeIcon icon={faSignOutAlt} size="2x" />
+            <FontAwesomeIcon icon={faFont} />
           </button>
-        )}
+          <select className="language-select" onChange={handleChangeLanguage}>
+            <option value="en">Español</option>
+            <option value="gl">Galego</option>
+            <option value="en">English</option>
+          </select>
+          {!isLogged ? (
+            <button
+              className="login-icon"
+              aria-label={t("login")}
+              onClick={handleUserModal}
+            >
+              <FontAwesomeIcon icon={faUser} size="2x" />
+            </button>
+          ) : (
+            <button
+              className="login-icon"
+              aria-label={t("close_session")}
+              onClick={handleCloseSession}
+            >
+              <FontAwesomeIcon icon={faSignOutAlt} size="2x" />
+            </button>
+          )}
+        </div>
       </div>
       <div>
         <Modal show={show} onHide={() => setShow(false)} centered>
