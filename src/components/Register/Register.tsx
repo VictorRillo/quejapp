@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./Register.scss";
 import { Form, Button, Container, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import useLogIn from "hooks/api/useLogIn";
-import useRegister from "hooks/api/useRegister";
-import { LogInType, RegisterType } from "types/userType";
+import useLogIn from "../../hooks/api/useLogIn";
+import useRegister from "../../hooks/api/useRegister";
+import { LogInType, RegisterType } from "../../types/userType";
 import toast from "react-hot-toast";
 
 export default function Register() {

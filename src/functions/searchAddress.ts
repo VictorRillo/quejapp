@@ -1,6 +1,6 @@
 import { HttpMethod } from "enums/HttpMethod";
 import { HttpUrl } from "enums/HttpUrl";
-import { default as axios } from 'axios';
+const axios = require('axios');
 
 export const searchAddress = async (querySearch: string, limit: number) => {
   const config = {

@@ -1,0 +1,1823 @@
+{
+	"info": {
+		"_postman_id": "1097a8c6-00ea-4939-aa7c-8852cf5c316d",
+		"name": "Quejas testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30886590"
+	},
+	"item": [
+		{
+			"name": "FAIL - POST AS ANONYMOUS WITHOUT POSITION",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(142);",
+							"    pm.expect(jsonData.error).to.eql(\"position is required\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - POST AS ANONYMOUS WITHOUT TITLE",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(142);",
+							"    pm.expect(jsonData.error).to.eql(\"title is required\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - POST AS ANONYMOUS WITHOUT DESCRIPTION",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(142);",
+							"    pm.expect(jsonData.error).to.eql(\"description is required\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - POST WITH WRONG PARAMS",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.include(\"Propiedad no permitida: \");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"test\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST AS ANONYMOUS",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.test(\"Set objectIdAnonimous from response\", function () {",
+							"    var jsonData = pm;",
+							"    console.log(JSON.stringify(pm))",
+							"    pm.environment.set(\"objectIdAnonimous\", jsonData.objectId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 201\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const responseData = pm.response.json();",
+							"",
+							"pm.test(\"Response has the required fields\", function () {  ",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.objectId).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.createdAt).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.status).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.priority).to.exist.and.to.be.a('string');",
+							"});",
+							"",
+							"",
+							"pm.test(\"ObjectId is a non-empty string\", function () {",
+							"  pm.expect(responseData.objectId).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+							"  pm.environment.set(\"objectIdAnonimous\", responseData.objectId);",
+							"});",
+							"",
+							"",
+							"pm.test(\"CreatedAt is a valid date format\", function () {",
+							"  pm.expect(responseData.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"CreatedAt should be a valid date format\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Status is a non-empty string\", function () {  ",
+							"  pm.expect(responseData.status).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"address\": \"Av. de César Augusto, 14, Casco Antiguo, 50004 Zaragoza\",\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - DELETE ANONYMOUS OBJECT AS ANONYMOUS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(101);",
+							"    pm.expect(jsonData.error).to.eql(\"Permission denied, user needs to be authenticated.\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/vfjBSy2K3f",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"vfjBSy2K3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - DELETE ANONYMOUS OBJECT AS  USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.eql(pm.environment.get('deleteErrorTextUserNotMatch'));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdAnonimous}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdAnonimous}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ANONYMOUS OBJECT AS ADMIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Resource has been successfully deleted from the server\", function () {",
+							"    pm.expect(pm.response.json()).to.eql({});",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{adminCookie}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdAnonimous}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdAnonimous}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST AS USER FOR USER TEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 201\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const responseData = pm.response.json();",
+							"",
+							"pm.test(\"Response has the required fields\", function () {  ",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.objectId).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.createdAt).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.status).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.priority).to.exist.and.to.be.a('string');",
+							"});",
+							"",
+							"",
+							"pm.test(\"ObjectId is a non-empty string\", function () {",
+							"  pm.expect(responseData.objectId).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+							"  pm.environment.set(\"objectIdUser\", responseData.objectId);",
+							"});",
+							"",
+							"",
+							"pm.test(\"CreatedAt is a valid date format\", function () {",
+							"  pm.expect(responseData.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"CreatedAt should be a valid date format\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Status is a non-empty string\", function () {  ",
+							"  pm.expect(responseData.status).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"address\": \"Av. de César Augusto, 14, Casco Antiguo, 50004 Zaragoza\",\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL -DELETE USER OBJECT AS USER OTHER USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.eql(pm.environment.get('deleteErrorTextUserNotMatch'));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{user2Cookie}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER OBJECT AS SAME USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Resource has been successfully deleted from the server\", function () {",
+							"    pm.expect(pm.response.json()).to.eql({});",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST AS USER FOR ADMIN TEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 201\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const responseData = pm.response.json();",
+							"",
+							"pm.test(\"Response has the required fields\", function () {  ",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.objectId).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.createdAt).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.status).to.exist.and.to.be.a('string');",
+							"  pm.expect(responseData.priority).to.exist.and.to.be.a('string');",
+							"});",
+							"",
+							"",
+							"pm.test(\"ObjectId is a non-empty string\", function () {",
+							"  pm.expect(responseData.objectId).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+							"  pm.environment.set(\"objectIdUser\", responseData.objectId);",
+							"});",
+							"",
+							"",
+							"pm.test(\"CreatedAt is a valid date format\", function () {",
+							"  pm.expect(responseData.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"CreatedAt should be a valid date format\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Status is a non-empty string\", function () {  ",
+							"  pm.expect(responseData.status).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"address\": \"Av. de César Augusto, 14, Casco Antiguo, 50004 Zaragoza\",\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE OBJECT AS ADMIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Resource has been successfully deleted from the server\", function () {",
+							"    pm.expect(pm.response.json()).to.eql({});",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{adminCookie}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE AS ANONYMOUS FOR PUT TEST",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Set objectIdAnonimous from response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"objectIdAnonimous\", jsonData.objectId);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"address\": \"Av. de César Augusto, 14, Casco Antiguo, 50004 Zaragoza\",\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - PUT AS ANONYMOUS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(101);",
+							"    pm.expect(jsonData.error).to.eql(\"Permission denied, user needs to be authenticated.\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - PUT AS USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.eql(pm.environment.get('putErrorTextUserNotMatch'));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdAnonimous}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdAnonimous}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT AS ADMIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.updatedAt).to.exist;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{adminCookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdAnonimous}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdAnonimous}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE AS USER FOR PUT TEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Set objectIdAnonimous from response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"objectIdUser\", jsonData.objectId);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"address\": \"Av. de César Augusto, 14, Casco Antiguo, 50004 Zaragoza\",\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - PUT AS OTHER USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.eql(pm.environment.get('putErrorTextUserNotMatch'));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{user2Cookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - PUT AS USER WITH STATUS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.eql(pm.environment.get('putErrorTextPriorityStatus'));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"wrong object\",\n    \"description\": \"test description\",\n    \"status\": \"IN PROGRESS\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - PUT AS USER WITH PRIORITY",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.eql(pm.environment.get('putErrorTextPriorityStatus'));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"wrong object\",\n    \"description\": \"test description\",\n    \"priority\": \"HIGH\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT AS USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Object received is ok\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.updatedAt).to.exist;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT AS ADMIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Object received is OK\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.updatedAt).to.exist;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{adminCookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\",\n    \"status\": \"IN PROGRESS\",\n    \"priority\": \"HIGHT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FAIL - PUT AS USER PENDING OBJECT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(141);",
+							"    pm.expect(jsonData.error).to.eql(pm.environment.get('putErrorTextNotPending'));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{userCookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"position\": [\n        41.650700276397906,\n        -0.8861860128554249\n    ],\n    \"title\": \"asdsadas titile\",\n    \"description\": \"test description\"\n}"
+				},
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET OBJECT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Verify required values are returned\", function () {",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.objectId).to.exist.and.to.be.a('string');",
+							"    pm.expect(responseData.position).to.exist.and.to.be.an('array').with.lengthOf.be.least(2);",
+							"    pm.expect(responseData.title).to.exist.and.to.be.a('string');",
+							"    pm.expect(responseData.description).to.exist.and.to.be.a('string');",
+							"    pm.expect(responseData.status).to.exist.and.to.be.a('string');",
+							"    pm.expect(responseData.priority).to.exist.and.to.be.a('string');",
+							"    pm.expect(responseData.author).to.exist.and.to.be.a('object');",
+							"    pm.expect(responseData.createdAt).to.exist.and.to.be.a('string');",
+							"    pm.expect(responseData.updatedAt).to.exist.and.to.be.a('string');",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET LIST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields\", function () {",
+							"    const responseData = pm.response.json();",
+							"    const requiredFields = [",
+							"        \"objectId\",",
+							"        \"position\",",
+							"        \"title\",",
+							"        \"description\",",
+							"        \"priority\",",
+							"        \"status\",",
+							"        \"createdAt\",",
+							"        \"updatedAt\"",
+							"    ];",
+							"",
+							"    requiredFields.forEach(function (field) {",
+							"        pm.expect(responseData.results[0]).to.have.property(field);",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Verify that the 'results' array is present and contains at least one element\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData.results).to.exist.and.to.be.an('array');",
+							"  pm.expect(responseData.results).to.have.lengthOf.at.least(1);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CLEAN ANONYMOUS OBJECT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{adminCookie}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdAnonimous}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdAnonimous}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CLEAN USER OBJECT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-parse-application-id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-rest-api-key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n",
+						"type": "text"
+					},
+					{
+						"key": "x-parse-session-token",
+						"value": "{{adminCookie}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja/{{objectIdUser}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja",
+						"{{objectIdUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET QUEJAS BY AUTHOR",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Parse-Application-Id",
+						"value": "I0G7w5ur7X4XnWIJ0JWyNYfBN0Cwg4ZSXTvkkGa7"
+					},
+					{
+						"key": "X-Parse-REST-API-Key",
+						"value": "Wymg0u9j8ccuEHs78niAOw4j94W7IkHWvwRDoV0n"
+					}
+				],
+				"url": {
+					"raw": "https://parseapi.back4app.com/classes/queja?where={\"author\": {\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"c4dl6rUrmd\"}}",
+					"protocol": "https",
+					"host": [
+						"parseapi",
+						"back4app",
+						"com"
+					],
+					"path": [
+						"classes",
+						"queja"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"author\": {\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"c4dl6rUrmd\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
