@@ -113,7 +113,7 @@ const Header = () => {
             <FontAwesomeIcon icon={faFont} />
           </button>
           <select className="language-select" onChange={handleChangeLanguage}>
-            <option value="en">Español</option>
+            <option value="es">Español</option>
             <option value="gl">Galego</option>
             <option value="en">English</option>
           </select>
